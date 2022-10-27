@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login - Brand</title>
+    <!-- Flask routing use static folder only -->
+    <link href="{{ url_for('static',filename='/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <!-- <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.js" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldLoader@v1.0.0/dist/ldld.min.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link href="{{ url_for('static',filename='fonts/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet" />
+    
+
+    <script>
+       (new ldLoader({root: ".ldld.default"})).on();
+    </script>
+</head>
+
+<body class="bg-gradient-custom-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-8 col-xl-8 d-flex justify-content-center align-self-center">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4 font-weight-bold">Cloudian Payroll System</h4>
+                                    </div>
+                                    <form class="user" method="POST">
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username...." name="username"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                            <select class="form-control form-control-user3" id="EmployeeType" name="EmployeeType">
+                                                <option value="undefined"><small>Login Option</small></option>
+                                                <option value="Cloudian"> <i class="fa fa-cloud" aria-hidden="true"></i> Cloudian Systems</option>
+                                                <option value="Probitionary">N / a </option>
+                                                <!-- <option value="Contractual">Contractual</option> -->
+                                            </select>
+                                        </div>
+                                        
+                                        <!-- <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                        
+                                        <div class="row">
+                                            <div class="text-center d-inline mx-auto"> 
+                                        <button class="button btn btn-primary mb-2 center" type="submit" onclick="this.classList.toggle('button--loading')"><span class="button__text">Login</span></button>
+                                            </div>
+                                                                       
+
+                                            
+
+                                        </div>
+                                        <hr>
+                                    </form>
+                                    <!-- <div class="text-center"><a class="small" href="forgot-password">Forgot Password?</a></div> -->
+                                    <!-- <div class="text-center"><a class="small" href="#">Register</a></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/chart.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bs-init.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/Contact-Form-v2-Modal--Full-with-Google-Map.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+</body>
+
+</html>

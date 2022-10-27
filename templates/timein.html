@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Cloudian</title>
+    <!-- Flask routing use static folder only -->
+    <link href="{{ url_for('static',filename='/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link href="{{ url_for('static',filename='fonts/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!-- employee color -->
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-custom-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>Cloudian Systems</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="index"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li> -->
+                    <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="profile"><i class="fas fa-user"></i><span>Profile</span></a></li> -->
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../announcements-alt"><i class="fas fa-bell"></i><span>Announcements</span></a></li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="#"><i class="fas fa-cog"></i><span>Time In</span></a>
+                        <a class="nav-link" href="../employee-details-view">
+                                <i class="fas fa-list-alt"></i><span>Employee Details</span></a></li>
+                     <li class="nav-item" role="presentation"><a class="nav-link" href="../leaveform"><i class="fas fa-sign-out-alt" aria-hidden="true"></i><span>Leave Form</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../login"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">Notifications</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">11/30/2020</span>
+                                                <p>Bonifacio Day</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">11/27/2020</span>
+                                                <p>Payslip received</p>
+                                            </div>
+                                        </a>
+                                        
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">11/25/2020</span>
+                                                <p>Leave Requests Sent.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter"><!--COUNT--></span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Message</span></div>
+                                                <p class="small text-gray-500 mb-0">FirstName LastName - Time</p>
+                                            </div>
+                                        </a>
+                                         <a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{g.user['name']}}</span><img class="border rounded-circle img-profile" src="static/img/heart%20heart.png"></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        <a
+                                            class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+    
+         
+            <div class="container-fluid">
+                <div>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Time Log</a></li>
+                        <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Time History</a></li>
+                        <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Payroll</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="tab-1">
+                            <!-- Start: Basic Card -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary m-0 font-weight-bold">Time In Time Out</h6>
+                                </div>
+                                <div class="card-body">
+
+                                        <!-- TAB 1 -->
+                                        <div>
+                                            <div class="text-center"></div>
+                                            <form class="user" action="/timein2" method="POST">
+                                                <h4 class="text-left text-dark m4"></h4>
+                                                <div class="form-row">
+                                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Username</label><input class="form-control form-control-user2" type="text" placeholder="Username" name="Username" value="{{g.user['Username']}}" readonly></div>
+                                                </div>
+                                                <hr>
+                                            
+                                            <div class="text-center"></div>
+                                            <div class="text-center"></div>
+                                        </div>
+                                        <div class="table-responsive hscroll">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Employment-type</th>
+                                                        
+                                                        <th>Annual Income</th>
+                                                        <th>Leave Credits</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{g.user['name']}}</td>
+                                                        <td>{{g.user['EmployeeType']}}</td>
+                                                    
+                                                        <td>{{g.userpayslip['NetPay']}}</td>
+                                                        <td>{{g.user['leaveCredit']}}</td>
+                                                        <td>
+                                                            <button class="btn btn-success btn-sm shadow-sm" data-bs-hover-animate="pulse" data-toggle="popover" data-placement="bottom" data-content="Sucess"
+                                                            name="timein" value="timein" type="submit">Time - IN</button>
+                                                            <button class="btn btn-danger btn-sm shadow-sm" data-bs-hover-animate="pulse" data-toggle="popover" data-placement="bottom" data-content="Sucess"
+                                                            name="timeout" value="timeout" type="submit">Time - OUT</button></td>
+                                                    </tr>
+                                                    <tr></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!-- End: Basic Card -->
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="tab-2">
+                            <!-- Start: Basic Card -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary m-0 font-weight-bold">Employee Time Details</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="m-0">Recent Time Details</p>
+
+                                        <!-- tab2 -->
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    
+                                                    <!-- <th>TimeIN</th>
+                                                    <th>TimeOut</th> -->
+                                                    {%if g.usertimein != None%}
+                                                    {% for k, v in g.usertimein.items() %}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <form action="/panels" method="POST">
+                                                        <td name="employeetimein">{{ k }}</td>
+                                                        <input type="hidden" name="employeetimein" value="{{ k }}" />
+                                                        <td>{{ k['Username'] }}</td>
+                                                        
+                                                        <td>{{ v['TimeIn'] | ctime }}</td>
+                                                        <td>{{ v['TimeOut'] | ctime }}</td>
+                                                                                                        
+                                                      </form>
+                                                </tr>
+                                                                          
+                                                {% endfor %}
+                                                {%endif%}
+                                            </tbody>
+                                        </table>
+
+
+
+
+
+                                </div>
+                            </div>
+                        
+                        <!-- End: Basic Card -->
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-3">
+                        <!-- Start: Basic Card -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary m-0 font-weight-bold">Reports</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    
+                                            <!-- TAB 3 -->
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                               
+                                                        <th name="employeetimein" ><h5 class="text-primary m-0 font-weight-bold">{{ g.userpayslip['Name'] }} </h5></th>
+                                                        <input type="hidden" name="employeetimein" value="{{ g.userpayslip['Name'] }}" />
+                                                        <th>Total</th>
+                                                        <th class="d-print-none">View Payslip</th>
+
+                         
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <form>
+                                                           
+                                                           
+                                                            <td>Date </td>
+                                                            <td>{{ g.userpayslip['Total']}}</td>
+                                                            <td> <button class="btn btn-success btn-sm shadow-sm d-print-none" data-bs-hover-animate="pulse" data-toggle="popover" data-placement="left" data-content="Generating"
+                                                                 type="submit">Generate</button>  </td>
+                                                        
+                                                          </form>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <form>
+                                                           
+                                                           
+                                                            <td>Date </td>
+                                                            <td>{{ g.userpayslip['Total']}}</td>
+                                                            <td> <button class="btn btn-success btn-sm shadow-sm d-print-none" data-bs-hover-animate="pulse" data-toggle="popover" data-placement="left" data-content="Generating"
+                                                                 type="submit">Generate</button>  </td>
+                                                        
+                                                          </form>
+                                                    </tr>                                                 
+                                                  
+                                                </tbody>
+                                            </table>
+                                            <table class="table ">
+                                                <thead>
+                                                    <tr>
+                                                        <td>TOTAL SALARY</td>
+                                                        <td>NUMBER OF CUT-OFFS</td>
+                                                        <td>TOTAL DEDUCTIONS</td>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                            <!-- print button -->
+                                                <div class="d-print-none"> 
+                                                    <div class="col no-print d-print-none"><a class="btn btn-primary d-print-none" onclick="window.print()" role="button">
+                                                        <span class="text-white-50 icon d-print-none"><i class="fas fa-file-pdf d-print-none"></i></span>
+                                                        <span class="text-white text d-print-none">Print</span></a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- End: Basic Card -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start: Basic Card -->
+        <div class="card shadow mb-4"></div>
+        <!-- End: Basic Card -->
+    </div>
+
+
+                <!-- End: Basic Card -->
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Cloudian © 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
+    <!-- Flask routing use static folder only -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/chart.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bs-init.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/Contact-Form-v2-Modal--Full-with-Google-Map.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+          })
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payslip- Cloudian</title>
+    <!-- Flask routing use static folder only -->
+    <link href="{{ url_for('static',filename='/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link href="{{ url_for('static',filename='fonts/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <div id="content"> 
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button><span style="opacity: 0;">Cloudian Systems</span></div>
+                </nav>
+                <div class="container-fluid">
+                    <div class="card shadow mb-5">
+                        <div class="card-header py-3">
+                            <h6 class="text-primary font-weight-bold m-0">Payslip</h6>
+                        </div>
+                        <div class="card-body" style="width: Auto;padding: auto;padding-top: 0px;padding-right: 0;padding-bottom: 0;padding-left: 0;margin: auto;height: auto;">
+                            <div class="p-5" style="padding: 0px;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;width: auto;height: auto;">
+                                
+                                <img class="border rounded-circle img-profile d-print-none" width="50px" src="static/img/heart%20heart.png">
+                                <!-- NAME -->
+                                <h1 class="text-primary">{{g.user['name']}}</h1>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-body">Software Developer</p>
+                                        <p class="text-body"><i class="fa fa-calendar"></i>&nbsp; 02/15/2020</p>
+                                    </div>
+                                </div>
+                                <div class="text-center"></div>
+                                <form class="user">
+                                    <div class="form-row">
+                                        <div class="col" style="margin: 10px;"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Basic Salary:&nbsp;</strong></label></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col" style="margin: 10px;"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Leave Pay / Other Pay:&nbsp;</strong></label></div>
+                                    </div>
+                                    <hr>
+                                    <h5 class="text-dark text-left text-dark m4">Deductions</h5>
+                                    <div class="form-row">
+                                        <div class="col-lg-4 offset-xl-0 d-table-row"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>SSS:&nbsp;</strong></label></div>
+                                        <div class="col-lg-4 offset-xl-0 d-table-row"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Pag-ibig:</strong></label></div>
+                                        <div class="col-lg-4 offset-xl-0 d-table-row"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Phil-Health:</strong></label></div>
+                                        <div class="col-lg-4 offset-xl-0 d-table-row"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Withholding Tax</strong>:</label></div>
+                                        <div class="col-lg-4 offset-xl-0 d-table-row"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Total Deduction:</strong></label></div>
+                                    </div>
+                                    <hr>
+                                </form>
+                                <h5 class="text-dark text-left text-dark m4">Total</h5>
+                                <div class="text-center"></div>
+                                <div class="col" style="margin: auto;width: auto;height: auto;padding: auto;"><label class="col-form-label text-left text-dark d-xl-flex justify-content-xl-start"><strong>Net Pay:</strong></label></div>
+                                <hr>
+                                <div class="row d-print-none"> 
+                                    <div class="col no-print d-print-none"><a class="btn btn-primary btn-icon-split d-print-none" onclick="window.print()" role="button"><span class="text-white-50 icon d-print-none"><i class="fas fa-file-pdf d-print-none"></i></span><span class="text-white text d-print-none">Print</span></a></div>
+                                    
+                                </div>
+
+                                   <center> <a href="index" class="d-print-none">← Back to Dashboard</a> </center>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Cloudian Payroll<br><br></span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+        </div>
+ <!-- Flask routing use static folder only -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
+ <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+ <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+ <script src="{{ url_for('static',filename='js/chart.min.js') }}"></script>
+ <script src="{{ url_for('static',filename='js/bs-init.js') }}"></script>
+ <script src="{{ url_for('static',filename='js/Contact-Form-v2-Modal--Full-with-Google-Map.js') }}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+ <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+</body>
+
+</html>

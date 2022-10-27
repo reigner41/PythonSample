@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Employee Details Alt- Cloudian</title>
+    <!-- Flask routing use static folder only -->
+    <link href="{{ url_for('static',filename='/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link href="{{ url_for('static',filename='fonts/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-custom-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>Cloudian Systems</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../announcements-alt"><i class="fas fa-bell"></i><span>Announcements</span></a></li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#"><i class="fas fa-cog"></i><span>Time In</span></a>
+                        <a class="nav-link  active" href="../employee-details-view">
+                                <i class="fas fa-list-alt"></i><span>Employee Details</span></a></li>
+                     <li class="nav-item" role="presentation"><a class="nav-link" href="../leaveform"><i class="fas fa-sign-out-alt" aria-hidden="true"></i><span>Leave Form</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../login"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a></li>
+                    <li class="nav-item" role="presentation"></li>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter">7</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Message</span></div>
+                                                <p class="small text-gray-500 mb-0">FirstName LastName - Time</p>
+                                            </div>
+                                        </a>
+                                         <a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Erine Lourene</span><img class="border rounded-circle img-profile" src="static/img/heart%20heart.png"></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        <a
+                                            class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+           
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Employee Details</p>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="text-left text-dark mb-4">Personal</h4>
+                        <div>
+                            <div class="text-center"></div>
+                            <form class="user">
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">First Name</label><input class="form-control form-control-user2" type="text" id="first_name" placeholder="First Name" name="name" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Last Name</label><input class="form-control form-control-user2" type="text" id="last_name" placeholder="Last Name" name="name" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Date of Birth</label><input class="form-control form-control-user2" id="BirthDate" type="date" name="BirthDate" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Gender</label><select class="form-control form-control-user3" id="Gender" name="Gender" readonly><option value="undefined">Gender</option><option value="12" selected="">Male</option><option value="13">Female</option></select></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Civil Status</label><select class="form-control form-control-user3" id="CivilStatus" name="CivilStatus" readonly><option value="undefined">Civil Status</option><option value="12" selected="">Single</option><option value="13">Married</option><option value="14">Widowed</option></select></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Spouse Name</label><input class="form-control form-control-user2" type="text" id="Name-Of-Spouse" placeholder="Spouse Name" name="NameOfSpouse" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Address</label><input class="form-control form-control-user2" type="text" id="Address" placeholder="Address" name="Address" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Number</label><input class="form-control form-control-user2" type="tel" id="Number" placeholder="Contact Number" name="Number" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Email Address</label><input class="form-control form-control-user2" type="email" id="E-mail" aria-describedby="emailHelp" placeholder="Email Address" name="E-mail" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Emergency Contact Person</label><input class="form-control form-control-user2" type="text" id="EmergencyContact" placeholder="Emergency Contact Person" name="EmergencyContact" readonly></div>
+                                </div>
+                                <h4 class="text-left text-dark m4">Important Numbers</h4>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Tin #</label><input class="form-control form-control-user2" type="text" id="Tin" placeholder="Tin Number" name="Tin" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">SSS #</label><input class="form-control form-control-user2" type="text" id="SSS" placeholder="Tin Number" name="SSS" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">PHIC</label><input class="form-control form-control-user2" type="text" id="PHIC" placeholder="PHIC" name="PHIC" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">HDMF</label><input class="form-control form-control-user2" type="text" id="HDMF" placeholder="HDMF" name="HDMF" readonly></div>
+                                </div>
+                                <h4 class="text-left text-dark m4">Bank Account</h4>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Bank</label><input class="form-control form-control-user2" type="text" id="Bank" placeholder="Bank" name="Bank" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Account Number</label><input class="form-control form-control-user2" type="text" id="AccountNo" placeholder="Account No." name="AccountNo" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Account Name</label><input class="form-control form-control-user2" type="text" id="AccountName" placeholder="Account Name" name="AccountName" readonly></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Payout Option</label><input class="form-control form-control-user2" type="text" id="PayOutOption" placeholder="Payout Option" name="PayOutOption" readonly></div>
+                                </div>
+                                <hr>
+                            </form>
+                            <div class="text-center"></div>
+                            <div class="text-center"></div>
+                        </div>
+                        <div class="card shadow-lg o-hidden border-0 my-5">
+                            <div class="card-body p-0"></div>
+                        </div>
+                        <form>
+                            <div class="card shadow-lg o-hidden border-0 my-5">
+                                <div class="card-body p-0"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Cloudian © 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
+    <!-- Flask routing use static folder only -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/chart.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bs-init.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/Contact-Form-v2-Modal--Full-with-Google-Map.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+
+</body>
+
+</html>

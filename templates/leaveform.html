@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Employee Leave Form - Cloudian</title>
+    <!-- Flask routing use static folder only -->
+    <link href="{{ url_for('static',filename='/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link href="{{ url_for('static',filename='fonts/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-custom-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>Cloudian Systems</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="index"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li> -->
+                    <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="profile"><i class="fas fa-user"></i><span>Profile</span></a></li> -->
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="announcements-alt"><i class="fas fa-bell"></i><span>Announcements</span></a></li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="timein"><i class="fas fa-cog"></i><span>Time In</span></a><a class="nav-link" href="../employee-details-view">
+                                <i class="fas fa-list-alt"></i><span>Employee Details</span></a></li>
+                     <li class="nav-item" role="presentation"><a class="nav-link active" href="../leaveform"><i class="fas fa-sign-out-alt" aria-hidden="true"></i><span>Leave Form</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../login"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter">7</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Message</span></div>
+                                                <p class="small text-gray-500 mb-0">FirstName LastName - Time</p>
+                                            </div>
+                                        </a>
+                                         <a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{g.user['name']}}</span><img class="border rounded-circle img-profile" src="static/img/heart%20heart.png"></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        <a
+                                            class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+              <div class="container-fluid">
+                <h3 class="text-dark mb-4">Employee Leave Form</h3>
+                <div>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Form</a></li>
+                        <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Status</a></li>
+                        <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Tab 3</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="tab-1">
+                            <div class="card shadow">       
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 font-weight-bold"></p>
+                                </div>
+                                <div class="card-body">
+                                    <div>
+                                        <div class="text-center"></div>
+                                        <form class="user" action="/leaveform" method="POST">
+                                            <h4 class="text-left text-dark m4"></h4>
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Leave Start Date</label><input class="form-control form-control-user2" id="LeavestartDate" type="date" name="LeavestartDate"></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Leave End Date</label><input class="form-control form-control-user2" id="LeaveendDate" type="date" name="LeaveendDate"></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Number Of Days</label><input class="form-control form-control-user2" type="number" id="NumberofDays" name="NumberofDays"></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Leave Type</label><select class="form-control form-control-user3" id="LeaveType" name="LeaveType"><option value="undefined">Leave Type</option><option value="Sick Leave" selected="">Sick Leave</option><option value="Vacation">Vacation</option></select></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Leave Details</label><textarea class="form-control form-control-user3" id="Leave" name="Leave"></textarea></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start"> Attach Support File (Medical Certificate, etc)</label> 
+                                                    <input type="file" class="form-control form-control-file form-control-user3" id="wala pang id">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-row">
+                                                <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start"></label>
+                                                    <button class="btn btn-primary" id="leavebtn" type="submit">Request for Leave</button></div>
+                                            </div>
+                                        </form>
+                                        <div class="text-center"></div>
+                                        <div class="text-center"></div>
+                                    </div>
+                                    <div class="card shadow-lg o-hidden border-0 my-5">
+                                        <div class="card-body p-0"></div>
+                                    </div>
+                                    <form>
+                                        <div class="card shadow-lg o-hidden border-0 my-5">
+                                            <div class="card-body p-0"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="tab-2">
+                            <div class="card shadow">       
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 font-weight-bold"></p>
+                                </div>
+                                <div class="card-body">
+                                    <div>
+                                        <div class="text-center"></div>
+                                       <!-- CONTENT FOR TAB 2 -->
+                                       <div class="table-responsive">
+                                    
+
+                                        <!-- TAB 3 -->
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Applydate</th>
+                                                    <th>LeaveDate</th>
+                                                    <th>LeaveNote</th>
+                                                    <th>LeaveType</th>
+                                                    <th>LeaveendDate</th>
+                                                    <th>NumberofDays</th>
+                                                    <th>status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {%if g.leavedata != None%}
+                                              
+                                                <tr>
+                                                    <form action="/panels" method="POST"> 
+                                                    <td>{{ g.leavedata['Applydate'] }}</td>
+                                                    <td>{{ g.leavedata['LeaveDate'] }}</td>
+                                                    <td>{{ g.leavedata['LeaveNote'] }}</td>
+                                                    <td>{{ g.leavedata['LeaveType'] }}</td>
+                                                    <td>{{ g.leavedata['LeaveendDate'] }}</td>
+                                                    <td>{{ g.leavedata['NumberofDays'] }}</td>
+                                                    <td>Pending</td>
+                                                  
+                                                </tr>
+                                                <tr>
+                                                </form>
+                                                </tr>
+                                               
+                                                 {%endif%}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                        <div class="text-center"></div>
+                                        <div class="text-center"></div>
+                                    </div>
+                                    <div class="card shadow-lg o-hidden border-0 my-5">
+                                        <div class="card-body p-0"></div>
+                                    </div>
+                                    <form>
+                                        <div class="card shadow-lg o-hidden border-0 my-5">
+                                            <div class="card-body p-0"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="tab-3">
+                            <p>Content for tab 3.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Cloudian © 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
+    <!-- Flask routing use static folder only -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/chart.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bs-init.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/Contact-Form-v2-Modal--Full-with-Google-Map.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+
+</body>
+
+</html>

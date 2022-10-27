@@ -1,0 +1,15 @@
+{
+    "TableName": "Blog",
+    "KeySchema": [
+      { "AttributeName": "Title", "KeyType": "HASH" },
+      { "AttributeName": "CreatedAt", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "Title", "AttributeType": "S" },
+      { "AttributeName": "CreatedAt", "AttributeType": "S" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+}

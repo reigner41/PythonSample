@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>View and Edit Employee - Cloudian</title>
+    <!-- Flask routing use static folder only -->
+    <link href="{{ url_for('static',filename='/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link href="{{ url_for('static',filename='fonts/fontawesome-all.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/custom.css') }}" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-custom-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>Cloudian Systems</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../index"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../announcements"><i class="fas fa-bell"></i><span>Announcements</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../profile"><i class="fas fa-user"></i><span>Payroll Dashboard</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../employee"><i class="fas fa-user-plus"></i><span>Employee</span></a><a class="nav-link" href="../payroll-settings"><i class="far fa-chart-bar"></i><span>Payroll Settings</span></a>
+                    </a><a class="nav-link" href="../payroll-settings"><i class="fas fa-list-alt"></i><span>Employee &amp; Details</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../login"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter">7</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Message</span></div>
+                                                <p class="small text-gray-500 mb-0">FirstName LastName - Time</p>
+                                            </div>
+                                        </a>
+                                         <a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Erine Lourene</span><img class="border rounded-circle img-profile" src="static/img/heart%20heart.png"></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        <a
+                                            class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                    </div>
+                    </li>
+                    </ul>
+            </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-dark mb-0">Team | View & Edit </h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Personal</h6>
+
+                            </div>
+                            <div class="card-body">
+                                <form class="user" action="/employee" method="POST">
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">First Name</label><input class="form-control form-control-user2" type="text" id="name" placeholder="First Name" name="first_name" value="{{value['first_name']}}" required></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Last Name</label><input class="form-control form-control-user2" type="text" id="name" placeholder="Last Name" name="last_name" value="{{value['last_name']}}" required></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Date of Birth</label><input class="form-control form-control-user2" id="BirthDate" type="date" name="BirthDate" value="{{value['BirthDate']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Age</label><input class="form-control 2form-control-user" type="number" id="age" name="Age" value="{{value['Age']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Gender</label><select class="form-control form-control-user3" name="Gender"><option value="undefined">Gender</option><option value="Male" selected="">Male</option><option value="Female">Female</option></select></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Civil Status</label><select class="form-control form-control-user3" id="CivilStatus" name="CivilStatus"><option value="undefined">Civil Status</option><option value="Single" selected="">Single</option><option value="Married">Married</option><option value="Widowed">Widowed</option></select></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Spouse Name</label><input class="form-control form-control-user2" type="text" id="Name-Of-Spouse" placeholder="Spouse Name" name="NameOfSpouse" value="{{value['NameOfSpouse']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Address</label><input class="form-control form-control-user2" type="text" id="Address" placeholder="Address" name="Address" value="{{value['Address']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Number</label><input class="form-control form-control-user2" type="tel" id="Number" placeholder="Contact Number" name="Number" value="{{value['Number']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Email Address</label><input class="form-control form-control-user2" type="email" id="E-mail" aria-describedby="emailHelp" placeholder="Email Address" name="E-mail" value="{{value['email']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Emergency Contact Person</label><input class="form-control form-control-user2" type="text" id="EmergencyContact" placeholder="Emergency Contact Person" name="EmergencyContact" value="{{value['EmergencyContact']}}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">System Access</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Username</label><input class="form-control form-control-user2" type="text" id="Username" placeholder="Username" name="Username" value="{{value['Username']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Confirm Password</label><input class="form-control form-control-user2" type="text" id="Password" placeholder="Password" name="Password" value="{{value['Password']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Role</label><input class="form-control form-control-user2" type="text" id="Role" placeholder="Role" name="Role" value="{{value['Role']}}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Bank</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Bank</label><input class="form-control form-control-user2" type="text" id="Bank" placeholder="Bank" name="Bank" value="{{value['Bank']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Account Number</label><input class="form-control form-control-user2" type="text" id="AccountNo" placeholder="Account No." name="AccountNo" value="{{value['AccountNo']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Account Name</label><input class="form-control form-control-user2" type="text" id="AccountName" placeholder="Account Name" name="AccountName" value="{{value['AccountName']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Payout Option</label><input class="form-control form-control-user2" type="text" id="PayOutOption" placeholder="Payout Option" name="PayOutOption" value="{{value['PayOutOption']}}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Employment Details and Compensation</h6>
+                            </div>
+                            <div class="card-body">
+                                     <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Position</label><input class="form-control form-control-user2" type="text" id="Position" placeholder="Position" name="Position" value="{{value['Position']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Department</label><input class="form-control form-control-user2" type="text" id="Department" placeholder="Department" name="Department"  value="{{value['Department']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Branch</label><input class="form-control form-control-user2" type="text" id="Branch" placeholder="Branch" name="Branch" value="{{value['Branch']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Section</label><input class="form-control form-control-user2" type="text" id="Section" placeholder="Section" name="Section"  value="{{value['Section']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Employee Type</label><select class="form-control form-control-user3" id="EmployeeType" name="EmployeeType"><option value="undefined">Employee Type</option><option value="Regular" selected="">Regular</option><option value="Probitionary">Probitionary</option><option value="Contractual">Contractual</option></select></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Joining Date</label><input class="form-control form-control-user2" id="JoinDate" type="date" name="JoinDate"  value="{{value['JoinDate']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Regularization Date</label><input class="form-control form-control-user2" id="RegularDate" type="date" name="RegularDate" value="{{value['RegularDate']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Basic Salary</label><input class="form-control form-control-user2" type="text" id="Basic-Salary" placeholder="Basic Salary" name="BasicSalary"  value="{{value['BasicSalary']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Cola</label><input class="form-control form-control-user2" type="text" id="Cola" placeholder="Your Cola" name="Cola" value="{{value['Cola']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Allowances</label><input class="form-control form-control-user2" type="text" id="Allowances" placeholder="Your Allowance" name="Allowances"  value="{{value['Allowances']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Service Charge</label><input class="form-control form-control-user2" type="text" id="ServiceCharge" placeholder="Your Service Charge" name="ServiceCharge" value="{{value['ServiceCharge']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">HMO</label><input class="form-control form-control-user2" type="text" id="HMO" placeholder="Your HMO" name="HMO" value="{{value['HMO']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Benefits</label><input class="form-control form-control-user2" type="text" id="Benefits" placeholder="Your Benefits" name="Benefits" value="{{value['Benefits']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Bio</label><textarea class="form-control form-control-user3" id="Bio" name="Bio"> {{value['Bio']}} </textarea></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="text-primary font-weight-bold m-0">Important Numbers</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">Tin #</label><input class="form-control form-control-user2" type="text" id="Tin" placeholder="Tin Number" name="Tin"  value="{{value['Tin']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">SSS #</label><input class="form-control form-control-user2" type="text" id="SSS" placeholder="Tin Number" name="SSS" value="{{value['SSS']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">PHIC</label><input class="form-control form-control-user2" type="text" id="PHIC" placeholder="PHIC" name="PHIC" value="{{value['PHIC']}}"></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col" style="margin: 10px;"><label class="text-left d-xl-flex justify-content-xl-start">HDMF</label><input class="form-control form-control-user2" type="text" id="HDMF" placeholder="HDMF" name="HDMF" value="{{value['HDMF']}}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-print-none">
+                                <h6 class="text-primary font-weight-bold m-0"> 
+                                    <button class="btn btn-primary btn-block text-white btn-user" id="demo" type="submit" onclick="myFunctionSave()">Save</button>
+                                    <p ></p>
+                                    <hr>
+                                    <div class="row d-print-none text-right"> 
+                                        <div class="col no-print d-print-none"><a class="btn btn-secondary btn-icon-split d-print-none" onclick="window.print()" role="button"><span class="text-white-50 icon d-print-none"><i class="fas fa-file-pdf d-print-none"></i></span><span class="text-white text d-print-none">Print</span></a></div>
+                                        
+                                    </div>
+                                </h6>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- test -->
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Cloudian © 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script>
+        function myFunctionSave() {
+          document.getElementById("demo").innerHTML = "Saving Please Wait";
+        }
+        </script>
+    <!-- Flask routing use static folder only -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/chart.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bs-init.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/Contact-Form-v2-Modal--Full-with-Google-Map.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+
+</body>
+
+</html>
